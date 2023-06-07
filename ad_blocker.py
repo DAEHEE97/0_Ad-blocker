@@ -22,6 +22,7 @@ def ad_blocker_coopang(keyword):
 
     results = []
 
+    
     for i in range(len(filtered_products)):
 
         # brand_name, product_name
@@ -33,12 +34,15 @@ def ad_blocker_coopang(keyword):
         # link
         anchor = filtered_products[i].find('a')
 
+        # price 스트링으로 변경후 `,` 제거후 int형으로 반환
+        price = int(filtered_products[i].select_one('.price-value').string.replace(",", ""))
+
         product_data = {
 
             'img_link' : 'https:'+filtered_products[i].select_one('.search-product-wrap-img')['src'],
             'brand' : brand_name,
             'name' : product_name.replace(",", ""),
-            'price': int(filtered_products[i].select_one('.price-value').string.replace(",", "")),
+            'price': price,
             'link' : 'https://www.coupang.com/'+anchor['href']
         }
 

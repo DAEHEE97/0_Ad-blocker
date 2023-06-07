@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Scrapper</title>
+    <title>Coopang Ad blocker</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-
+    
 </head>
-    <body>
 
-        <main class = "container">
+<body>
 
-            <h1>Search result : {{keyword}}</h1>
-            <a target = "_blank" href="export?keyword={{keyword}}"> Exprot to file </a>
-                <figure>
+    <main class = "container">
 
-                    <table role="grid">
+        <h1>Search result : {{keyword}}</h1>
+        <a target = "_blank" href="export?keyword={{keyword}}"> Exprot to file </a>
+            <figure>
 
-                        <thead>
-                            <tr>
-                                <th>Brand</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Link</th>
-                            </tr>
-                        </thead>
+                <table role="grid">
+
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Brand</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
                         
-                        <tbody>
-                            {% for product in products %}
-                            <tr>
-                                <td>{{product.brand}}</td>
-                                <td>{{product.name}}</td>
-                                <td>{{product.price}}</td>
-                                <td><a href = "{{product.link}}" target="_blank">click now &rarr;</a></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td><img src="{{ product.img_link }}" alt="Product Image" width="100"></td>
+                            <td>{{product.brand}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.price}}</td>
+                            <td><a href = "{{product.link}}" target="_blank">click now &rarr;</a></td>
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
 
-                    </table>
-
-                </figure>
-        </main>
-
-    </body>
+                </table>
+            
+            </figure>
+    </main>
+    
+</body>
+    
 </html>
